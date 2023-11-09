@@ -1,0 +1,32 @@
+# all:
+#   hosts: 
+#     prometheusServer:
+#       ansible_host:18.194.38.230 
+#       ansible_user:ec2-user 
+#       ansible_port:22 
+#       ansible_ssh_private_key_file:~/.ssh/id_rsa
+#     nodeExplorer:
+#       ansible_host:3.70.204.133 
+#       ansible_user:ec2-user 
+#       ansible_port:22 
+#       ansible_ssh_private_key_file:~/.ssh/id_rsa
+all:
+  hosts:
+    prometheusServer01:
+      ansible_host: 18.194.38.230
+      ansible_user: ec2-user
+      ansible_port: 22
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa
+    nodeExplorer01:
+      ansible_host: 3.70.204.133
+      ansible_user: ec2-user
+      ansible_port: 22
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa
+
+  children:
+    prometheusServer:
+      hosts:
+        prometheusServer01:
+    nodeExplorer:
+      hosts:
+        nodeExplorer01:
